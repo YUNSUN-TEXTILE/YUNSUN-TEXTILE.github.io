@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>芸生科技 | Yunsheng Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+            color: #1e2a3e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        .site-header {
+            background-color: #0a3b2f;
+            color: white;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .logo-area h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+        .logo-area p {
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            opacity: 0.85;
+            margin-top: 4px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+            align-items: center;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+        .lang-switch {
+            background: rgba(255,255,255,0.15);
+            padding: 6px 12px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .lang-switch:hover {
+            background: rgba(255,255,255,0.3);
+            opacity: 1;
+        }
+        @media (max-width: 800px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            .nav-links {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        .hero {
+            background: linear-gradient(105deg, #eef5f2 0%, #ffffff 100%);
+            padding: 70px 0 60px;
+            border-bottom: 1px solid #e0ece6;
+        }
+        .hero-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+        }
+        .hero-text {
+            flex: 1.2;
+        }
+        .hero-badge {
+            background: #0a3b2f;
+            color: white;
+            display: inline-block;
+            padding: 6px 14px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border-radius: 30px;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+        }
+        .hero-text h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #0a3b2f;
+            margin-bottom: 20px;
+        }
+        .hero-text p {
+            font-size: 1.1rem;
+            color: #2c4a3b;
+            max-width: 560px;
+            margin-bottom: 32px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .stat-item {
+            border-left: 3px solid #2e8b6c;
+            padding-left: 16px;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0a3b2f;
+        }
+        .hero-visual {
+            flex: 0.8;
+            text-align: center;
+        }
+        .hero-visual i {
+            font-size: 7rem;
+            color: #2e8b6c;
+            opacity: 0.75;
+        }
+        @media (max-width: 800px) {
+            .hero-text h2 { font-size: 2rem; }
+            .hero-grid { flex-direction: column; }
+        }
+
+        .section {
+            padding: 72px 0;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #0a3b2f;
+            display: inline-block;
+        }
+        .section-sub {
+            color: #5a6e5c;
+            margin-bottom: 48px;
+            font-size: 1rem;
+            max-width: 700px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 48px;
+        }
+        .about-text p {
+            margin-bottom: 20px;
+            color: #2c3e2f;
+            line-height: 1.6;
+        }
+        .about-highlight {
+            background: #f8faf8;
+            padding: 24px;
+            border-radius: 20px;
+            border-left: 4px solid #2e8b6c;
+        }
+        .info-list {
+            list-style: none;
+        }
+        .info-list li {
+            margin-bottom: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: baseline;
+        }
+        .info-list i {
+            color: #2e8b6c;
+            width: 24px;
+            margin-top: 4px;
+        }
+        .business-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 16px;
+        }
+        .biz-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.03);
+            transition: 0.25s ease;
+            border: 1px solid #e2ece6;
+        }
+        .biz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.08);
+            border-color: #bdd9cf;
+        }
+        .biz-icon {
+            font-size: 2.4rem;
+            color: #2e8b6c;
+            margin-bottom: 20px;
+        }
+        .biz-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        .platform-section {
+            background: #f0f6f3;
+        }
+        .platform-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            align-items: center;
+        }
+        .platform-text {
+            flex: 1;
+        }
+        .platform-stats {
+            display: flex;
+            gap: 32px;
+            margin-top: 24px;
+            flex-wrap: wrap;
+        }
+        .stat-mini {
+            background: white;
+            border-radius: 24px;
+            padding: 12px 20px;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .stat-mini span {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #0a3b2f;
+            display: block;
+        }
+        .platform-img {
+            flex: 0.8;
+            background: #e2ece6;
+            border-radius: 32px;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        .platform-img i {
+            font-size: 5rem;
+            color: #1f634e;
+        }
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px,1fr));
+            gap: 30px;
+        }
+        .news-item {
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid #e6f0ec;
+            transition: 0.2s;
+        }
+        .news-date {
+            background: #f6fcf9;
+            padding: 12px 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #2e8b6c;
+            border-bottom: 1px solid #e2ece6;
+        }
+        .news-title {
+            padding: 20px 20px 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        .footer {
+            background: #0a3b2f;
+            color: #cfeadf;
+            padding: 48px 0 32px;
+            margin-top: 24px;
+        }
+        .footer-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+        .footer-col p, .footer-col a {
+            color: #c2dfd4;
+            text-decoration: none;
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #1f5a4a;
+            padding-top: 28px;
+            font-size: 0.75rem;
+        }
+        [data-lang="en"] {
+            display: none;
+        }
+        body.lang-en [data-lang="zh"] {
+            display: none;
+        }
+        body.lang-en [data-lang="en"] {
+            display: block;
+        }
+        .cert-badge {
+            display: inline-block;
+            background: #e9f3ef;
+            color: #0a3b2f;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        .cert-list {
+            margin-top: 16px;
+        }
+        .certificate-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+            margin-top: 32px;
+            justify-content: center;
+        }
+        .cert-card {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            padding: 16px;
+            text-align: center;
+            flex: 1;
+            min-width: 220px;
+            transition: transform 0.2s;
+        }
+        .cert-card:hover {
+            transform: translateY(-4px);
+        }
+        .cert-card .image-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 12px;
+            background: #f5f7f5;
+            border-radius: 8px;
+            border: 1px solid #e0ece6;
+            min-height: 200px;
+        }
+        .cert-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            display: block;
+            object-fit: contain;
+            max-height: 220px;
+        }
+        /* 营业执照图片旋转样式：逆时针旋转90度 */
+        .cert-card .rotated-image {
+            transform: rotate(-90deg);
+            max-width: 220px;
+            max-height: 300px;
+            width: auto;
+            height: auto;
+        }
+        .cert-card .cert-label {
+            font-weight: 600;
+            color: #0a3b2f;
+            font-size: 0.85rem;
+        }
+        .listing-badge {
+            background: #e9b53e;
+            color: #0a3b2f;
+            padding: 8px 16px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin: 16px 0 8px;
+        }
+        @media (max-width: 600px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+            .cert-card {
+                min-width: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="logo-area">
+                <h1 data-lang="zh">芸生科技</h1>
+                <h1 data-lang="en" style="font-size:1.5rem;">Yunsheng</h1>
+                <p data-lang="zh">宁波芸生纺织品科技有限公司</p>
+                <p data-lang="en">NINGBO YUNSHENG TEXTILE TECHNOLOGY CO., LTD.</p>
+            </div>
+            <ul class="nav-links">
+                <li><a data-lang="zh" id="nav-home-zh">首页</a><a data-lang="en" id="nav-home-en">Home</a></li>
+                <li><a data-lang="zh" id="nav-about-zh">关于我们</a><a data-lang="en" id="nav-about-en">About</a></li>
+                <li><a data-lang="zh" id="nav-business-zh">核心业务</a><a data-lang="en" id="nav-business-en">Business</a></li>
+                <li><a data-lang="zh" id="nav-innovation-zh">研发创新</a><a data-lang="en" id="nav-innovation-en">R&amp;D</a></li>
+                <li><a data-lang="zh" id="nav-news-zh">新闻动态</a><a data-lang="en" id="nav-news-en">News</a></li>
+                <li><a class="lang-switch" id="langToggle">English</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero 中文 -->
+        <div class="hero" data-lang="zh">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">工贸一体 · 纺纱专家</div>
+                    <h2>高品质纱线供应商<br>全球纺织供应链服务商</h2>
+                    <p>宁波芸生纺织品科技有限公司是一家工贸一体的纺纱企业，专业从事各类高品质纱线的研发、生产与销售，产品远销巴基斯坦、印度、孟加拉、越南、土耳其等国。</p>
+                    <div class="hero-stats">
+                        <div class="stat-item"><div class="stat-number">20+</div><div>国际市场覆盖</div></div>
+                        <div class="stat-item"><div class="stat-number">8项</div><div>国际权威认证</div></div>
+                        <div class="stat-item"><div class="stat-number">50S-120S</div><div>精梳紧密纺支</div></div>
+                    </div>
+                </div>
+                <div class="hero-visual"><i class="fas fa-fan"></i></div>
+            </div>
+        </div>
+        <!-- Hero 英文 -->
+        <div class="hero" data-lang="en">
+            <div class="container hero-grid">
+                <div class="hero-text">
+                    <div class="hero-badge">Integrated Spinning Expert</div>
+                    <h2>High-Quality Yarn Supplier<br>Global Textile Supply Chain Partner</h2>
+                    <p>Ningbo Yunsheng Textile Technology Co., Ltd. is an integrated manufacturing and trading spinning enterprise, specializing in the R&D, production and sales of various high-quality yarns, exported to Pakistan, India, Bangladesh, Vietnam, Turkey and beyond.</p>
+                    <div class="hero-stats">
+                        <div class="stat-item"><div class="stat-number">20+</div><div>Global Markets</div></div>
+                        <div class="stat-item"><div class="stat-number">8</div><div>International Certifications</div></div>
+                        <div class="stat-item"><div class="stat-number">50S-120S</div><div>Combed Compact Yarn</div></div>
+                    </div>
+                </div>
+                <div class="hero-visual"><i class="fas fa-fan"></i></div>
+            </div>
+        </div>
+
+        <!-- About 中文 -->
+        <div class="container section" data-lang="zh" id="about-zh">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-title">关于芸生科技</span>
+                    <div class="section-sub">工贸一体 · 品质为先 · 服务全球</div>
+                    <p>宁波芸生纺织品科技有限公司是一家工贸一体的纺纱企业，主要销售各类高品质全棉纱线(50S/1-120S/1)精梳紧密纺纱、各类进口棉纱（6S/1-32S/1）,以及各类纱线的加工业务等。</p>
+                    <p>公司现已经取得有机棉认证（GOTS,OCS），再生认证（GRS,RECYCLE COTTON AND RECYCLE POLYESTER），非洲棉证书（CMIA）,美棉证书（USCTP）,良好棉证书（BCI）等。出口产品主要销往巴基斯坦，印度，孟加拉，越南，土耳其等国。进口纱线主要销往河南、河北、浙江、广东、江苏、江西、山东等地。</p>
+                    <p>公司自成立以来，凭着优良的产品品质、合理的价格以及完善快捷的服务，赢得了国内外客户的信赖。公司一直以来公司采用严格的管理系统（现已通过GOTS,OCS,GRS,CMIA,BCI等认证），生产效率高，赢得广大客户的认可。</p>
+                    <p>公司本着"勇于开拓、不断进取"的精神，坚持"质量为本、信誉第一"的承诺，紧跟国内、外市场的发展和需要，满足客人的需求。公司推崇"以人为本"的管理理念，为员工提供充满挑战的发展平台及完善的福利待遇。诚邀有识之士加入宁波芸生纺织品科技有限公司，与公司携手并进、乘新时代的战船，破浪前行！</p>
+                    
+                    <div class="listing-badge">甬股交挂牌企业 代码：782327</div>
+                    <p style="font-size:0.85rem; color:#2c5a48;">2020年第四期集中挂牌 · 宁波股权交易中心</p>
+                    
+                    <div class="cert-list">
+                        <span class="cert-badge">GOTS</span>
+                        <span class="cert-badge">OCS</span>
+                        <span class="cert-badge">GRS</span>
+                        <span class="cert-badge">CMIA</span>
+                        <span class="cert-badge">BCI</span>
+                        <span class="cert-badge">USCTP</span>
+                        <span class="cert-badge">RECYCLE COTTON</span>
+                        <span class="cert-badge">RECYCLE POLYESTER</span>
+                    </div>
+                    
+                    <!-- 证书图片展示 - 营业执照图片逆时针旋转90度 -->
+                    <div class="certificate-row">
+                        <div class="cert-card">
+                            <div class="image-wrapper">
+                                <img src="images/certificate.jpg" alt="甬股交挂牌证书" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2ece6/2c5a48?text=Certificate'">
+                            </div>
+                            <div class="cert-label">甬股交挂牌证书<br>代码：782327</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="image-wrapper">
+                                <img src="images/license.jpg" alt="企业营业执照" class="rotated-image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2ece6/2c5a48?text=Business+License'">
+                            </div>
+                            <div class="cert-label">企业营业执照</div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-highlight" style="margin-top: 24px;">
+                        <i class="fas fa-quote-left" style="margin-right: 8px; color:#2e8b6c;"></i> 愿景：成为全球纺纱领域受人尊敬的百年企业
+                    </div>
+                </div>
+                <div class="about-highlight" style="background: #fff; border:1px solid #e2ece6;">
+                    <ul class="info-list">
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>公司地址：</strong> 宁波市镇海区招宝山街道平海路1188号</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>企业类型：</strong> 工贸一体 / 高新技术企业</li>
+                        <li><i class="fas fa-building"></i> <strong>生产基地：</strong> 宁波 · 绍兴</li>
+                        <li><i class="fas fa-globe"></i> <strong>海外办事处：</strong> 巴基斯坦、孟加拉、土耳其</li>
+                        <li><i class="fas fa-phone-alt"></i> <strong>联系电话：</strong> +86-574-87336688</li>
+                        <li><i class="fas fa-envelope"></i> <strong>电子邮箱：</strong> contact@yunsheng-textile.com</li>
+                        <li><i class="fas fa-chart-simple"></i> <strong>甬股交代码：</strong> 782327（2020年第四期挂牌）</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- About 英文 -->
+        <div class="container section" data-lang="en" id="about-en">
+            <div class="about-grid">
+                <div class="about-text">
+                    <span class="section-title">About Yunsheng</span>
+                    <div class="section-sub">Integrated Manufacturing & Trading · Quality First · Serving Global Markets</div>
+                    <p>Ningbo Yunsheng Textile Technology Co., Ltd. is an integrated manufacturing and trading enterprise specialized in the spinning industry. Our company mainly engages in the sales of a wide variety of high-quality pure cotton yarns, including combed compact spinning yarns ranging from 50S/1 to 120S/1, as well as various imported cotton yarns with counts from 6S/1 to 32S/1. Moreover, we offer processing services for different types of yarns.</p>
+                    <p>The company has obtained certifications including Global Organic Textile Standard (GOTS), Organic Content Standard (OCS) for organic cotton; Global Recycled Standard (GRS) as well as certificates for recycled cotton and recycled polyester; Cotton Made in Africa (CMIA), U.S. Cotton Trust Protocol (USCTP) and Better Cotton Initiative (BCI). Our export products are mainly sold to countries such as Pakistan, India, Bangladesh, Vietnam, and Turkey. Meanwhile, the imported yarns find their markets in numerous domestic provinces, including Henan, Hebei, Zhejiang, Guangdong, Jiangsu, Jiangxi, and Shandong.</p>
+                    <p>Since its establishment, our company has won the trust of customers at home and abroad, thanks to our outstanding product quality, reasonable prices, and comprehensive, efficient services. We have implemented a rigorous management system, which has been certified by multiple international standards, such as GOTS, OCS, GRS, CMIA, and BCI. This strict management has led to high production efficiency and has been widely recognized by our customers.</p>
+                    <p>Upholding the spirit of "daring to explore and constantly forging ahead", we adhere to the commitment of "quality first and reputation foremost". We closely follow the development trends and demands of both the domestic and international markets, striving to meet the various needs of our clients. Our company advocates the "people-oriented" management philosophy. We provide our employees with a challenging career development platform and a complete package of welfare benefits. We sincerely invite talented individuals to join Ningbo Yunsheng Textile Technology Co., Ltd. Let's join hands, ride the waves on the ship of the new era, and sail forward together!</p>
+                    
+                    <div class="listing-badge">Ningbo Equity Exchange Listed · Code: 782327</div>
+                    <p style="font-size:0.85rem; color:#2c5a48;">4th Batch Centralized Listing 2020 · Ningbo Equity Trading Center</p>
+                    
+                    <div class="cert-list">
+                        <span class="cert-badge">GOTS</span>
+                        <span class="cert-badge">OCS</span>
+                        <span class="cert-badge">GRS</span>
+                        <span class="cert-badge">CMIA</span>
+                        <span class="cert-badge">BCI</span>
+                        <span class="cert-badge">USCTP</span>
+                        <span class="cert-badge">RECYCLE COTTON</span>
+                        <span class="cert-badge">RECYCLE POLYESTER</span>
+                    </div>
+                    
+                    <!-- Certificate images with rotated business license -->
+                    <div class="certificate-row">
+                        <div class="cert-card">
+                            <div class="image-wrapper">
+                                <img src="images/certificate.jpg" alt="Ningbo Equity Listing Certificate" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2ece6/2c5a48?text=Certificate'">
+                            </div>
+                            <div class="cert-label">Listing Certificate<br>Code: 782327</div>
+                        </div>
+                        <div class="cert-card">
+                            <div class="image-wrapper">
+                                <img src="images/license.jpg" alt="Business License" class="rotated-image" onerror="this.onerror=null; this.src='https://placehold.co/400x300/e2ece6/2c5a48?text=Business+License'">
+                            </div>
+                            <div class="cert-label">Business License</div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-highlight" style="margin-top: 24px;">
+                        <i class="fas fa-quote-left" style="margin-right: 8px; color:#2e8b6c;"></i> Vision: A Respected Century-Old Enterprise in Global Spinning Industry
+                    </div>
+                </div>
+                <div class="about-highlight" style="background: #fff; border:1px solid #e2ece6;">
+                    <ul class="info-list">
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> No.1188 Pinghai Road, Zhaobaoshan Street, Zhenhai District, Ningbo, China</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Business Type:</strong> Integrated Manufacturing & Trading / High-Tech Enterprise</li>
+                        <li><i class="fas fa-building"></i> <strong>Production Bases:</strong> Ningbo · Shaoxing</li>
+                        <li><i class="fas fa-globe"></i> <strong>Overseas Offices:</strong> Pakistan, Bangladesh, Turkey</li>
+                        <li><i class="fas fa-phone-alt"></i> <strong>Phone:</strong> +86-574-87336688</li>
+                        <li><i class="fas fa-envelope"></i> <strong>Email:</strong> contact@yunsheng-textile.com</li>
+                        <li><i class="fas fa-chart-simple"></i> <strong>Ningbo Equity Code:</strong> 782327 (Listed 2020)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business 中文 -->
+        <div class="container section" data-lang="zh" id="business-zh">
+            <span class="section-title">核心业务</span>
+            <div class="section-sub">高品质纱线 · 全品类供应 · 加工定制</div>
+            <div class="business-grid">
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-thread"></i></div><h3>精梳紧密纺纱</h3><p>50S/1-120S/1高品质全棉纱线，条干均匀、强力高，满足高端织造需求。</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-boxes"></i></div><h3>进口棉纱</h3><p>6S/1-32S/1各类进口棉纱，来源稳定，品质可靠，供应国内主要纺织省份。</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-cogs"></i></div><h3>纱线加工业务</h3><p>提供来料加工、定制纺纱、染色加工等一站式纱线解决方案。</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-leaf"></i></div><h3>有机棉认证产品</h3><p>GOTS/OCS认证有机棉纱线，满足绿色环保纺织品市场需求。</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-recycle"></i></div><h3>再生纤维纱线</h3><p>GRS认证再生棉/涤纶纱线，支持循环经济与可持续发展。</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-chart-line"></i></div><h3>全球供应链服务</h3><p>从巴基斯坦到土耳其，从河南到广东，覆盖国内外主要纺织市场。</p></div>
+            </div>
+            <div style="margin-top:32px; background:#f9fbf9; padding:20px; border-radius:24px; text-align:center; font-size:0.9rem;">
+                🌱 认证体系：GOTS | OCS | GRS | CMIA | BCI | USCTP | 质量为本 · 信誉第一
+            </div>
+        </div>
+        <!-- Business 英文 -->
+        <div class="container section" data-lang="en" id="business-en">
+            <span class="section-title">Core Business</span>
+            <div class="section-sub">High-Quality Yarns · Full Range Supply · Custom Processing</div>
+            <div class="business-grid">
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-thread"></i></div><h3>Combed Compact Yarn</h3><p>50S/1-120S/1 high-quality pure cotton yarn with even count and high strength for premium weaving.</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-boxes"></i></div><h3>Imported Cotton Yarn</h3><p>6S/1-32S/1 various imported cotton yarns with stable supply and reliable quality for China's major textile provinces.</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-cogs"></i></div><h3>Yarn Processing Services</h3><p>One-stop yarn solutions including toll manufacturing, custom spinning, and dyeing processing.</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-leaf"></i></div><h3>Organic Cotton Products</h3><p>GOTS/OCS certified organic cotton yarns meeting green and eco-friendly textile market demand.</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-recycle"></i></div><h3>Recycled Fiber Yarns</h3><p>GRS certified recycled cotton/polyester yarns supporting circular economy and sustainable development.</p></div>
+                <div class="biz-card"><div class="biz-icon"><i class="fas fa-chart-line"></i></div><h3>Global Supply Chain</h3><p>From Pakistan to Turkey, from Henan to Guangdong, covering major textile markets worldwide.</p></div>
+            </div>
+            <div style="margin-top:32px; background:#f9fbf9; padding:20px; border-radius:24px; text-align:center; font-size:0.9rem;">
+                🌱 Certifications: GOTS | OCS | GRS | CMIA | BCI | USCTP | Quality First · Reputation Foremost
+            </div>
+        </div>
+
+        <!-- R&D Innovation 中文 -->
+        <div class="platform-section section" data-lang="zh" id="innovation-zh">
+            <div class="container">
+                <div class="platform-content">
+                    <div class="platform-text"><span class="section-title" style="font-size:1.8rem;">品质管控与研发</span><p style="margin:16px 0 12px;">严格管理系统 · 国际认证体系<br>公司采用严格的管理系统，已通过GOTS,OCS,GRS,CMIA,BCI等多项国际认证，生产效率高，品质稳定可靠。</p><p>我们紧跟国内外市场发展和客户需求，持续投入纺纱工艺改进与新品开发，致力于为客户提供最具性价比的纱线产品。</p><div class="platform-stats"><div class="stat-mini"><span>8项</span>国际认证</div><div class="stat-mini"><span>50S-120S</span>高支纱</div><div class="stat-mini"><span>20+</span>出口国家</div></div></div>
+                    <div class="platform-img"><i class="fas fa-chart-line"></i><p style="margin-top:12px;">品质检测中心</p></div>
+                </div>
+            </div>
+        </div>
+        <!-- R&D Innovation 英文 -->
+        <div class="platform-section section" data-lang="en" id="innovation-en">
+            <div class="container">
+                <div class="platform-content">
+                    <div class="platform-text"><span class="section-title" style="font-size:1.8rem;">Quality Control & R&D</span><p style="margin:16px 0 12px;">Strict Management System · International Certifications<br>We have implemented a rigorous management system certified by GOTS, OCS, GRS, CMIA, BCI and other international standards, ensuring high production efficiency and stable quality.</p><p>Following market trends and customer needs, we continuously invest in spinning process improvement and new product development, committed to providing the most cost-effective yarn products.</p><div class="platform-stats"><div class="stat-mini"><span>8</span>Certifications</div><div class="stat-mini"><span>50S-120S</span>High Count</div><div class="stat-mini"><span>20+</span>Export Countries</div></div></div>
+                    <div class="platform-img"><i class="fas fa-chart-line"></i><p style="margin-top:12px;">Quality Testing Center</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- News 中文/英文 简洁保留 -->
+        <div class="container section" data-lang="zh" id="news-zh">
+            <span class="section-title">最新动态</span><div class="section-sub">聚焦芸生 · 品质引领未来</div>
+            <div class="news-grid"><div class="news-item"><div class="news-date">2025年9月</div><div class="news-title">芸生科技新增USCTP美棉认证</div><div class="news-desc">公司成功获得美国棉花信任协议认证，进一步拓展北美高端市场。</div></div><div class="news-item"><div class="news-date">2025年8月</div><div class="news-title">GRS认证再生纱线产能提升50%</div><div class="news-desc">为满足日益增长的环保纺织品需求，公司扩大再生纤维纱线生产能力。</div></div><div class="news-item"><div class="news-date">2025年6月</div><div class="news-title">参加孟加拉国际纺织展收获颇丰</div><div class="news-desc">展会期间与多家南亚采购商达成合作意向，现场签约金额超300万美元。</div></div></div>
+        </div>
+        <div class="container section" data-lang="en" id="news-en">
+            <span class="section-title">Latest News</span><div class="section-sub">Yunsheng Moments · Quality Leading the Future</div>
+            <div class="news-grid"><div class="news-item"><div class="news-date">Sept 2025</div><div class="news-title">Yunsheng Obtains USCTP Certification</div><div class="news-desc">Successfully received US Cotton Trust Protocol certification, expanding into North American premium markets.</div></div><div class="news-item"><div class="news-date">Aug 2025</div><div class="news-title">50% Capacity Increase for GRS Recycled Yarn</div><div class="news-desc">Expanding recycled fiber yarn production capacity to meet growing demand for eco-friendly textiles.</div></div><div class="news-item"><div class="news-date">June 2025</div><div class="news-title">Successful Participation at Bangladesh Textile Expo</div><div class="news-desc">Signed cooperation意向 with multiple South Asian buyers, on-site orders exceeding $3 million.</div></div></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col"><h4 data-lang="zh">宁波芸生纺织品科技有限公司</h4><h4 data-lang="en">Ningbo Yunsheng Textile Technology Co., Ltd.</h4><p data-lang="zh">工贸一体 · 品质为先 · 服务全球</p><p data-lang="en">Integrated Spinning · Quality First · Global Service</p><p><i class="fas fa-map-pin"></i> <span data-lang="zh">宁波市镇海区招宝山街道平海路1188号</span><span data-lang="en">No.1188 Pinghai Road, Zhenhai District, Ningbo, China</span></p></div>
+                <div class="footer-col"><h4 data-lang="zh">快速链接</h4><h4 data-lang="en">Quick Links</h4><a data-lang="zh" id="footer-about-zh">关于我们</a><a data-lang="en" id="footer-about-en">About</a><a data-lang="zh" id="footer-business-zh">核心业务</a><a data-lang="en" id="footer-business-en">Business</a><a data-lang="zh" id="footer-innovation-zh">品质研发</a><a data-lang="en" id="footer-innovation-en">Quality</a></div>
+                <div class="footer-col"><h4 data-lang="zh">联系方式</h4><h4 data-lang="en">Contact</h4><p>Tel: +86-574-87336688</p><p>Email: contact@yunsheng-textile.com</p><p data-lang="zh">业务咨询: sales@yunsheng-textile.com</p><p data-lang="en">Sales: sales@yunsheng-textile.com</p></div>
+                <div class="footer-col"><h4 data-lang="zh">关注我们</h4><h4 data-lang="en">Follow Us</h4><div style="display:flex; gap:12px;"><i class="fab fa-linkedin"></i><i class="fab fa-twitter"></i><i class="fab fa-weixin"></i></div></div>
+            </div>
+            <div class="copyright"><span data-lang="zh">© 2025 宁波芸生纺织品科技有限公司 版权所有 | 甬股交代码：782327 | 质量为本 · 信誉第一</span><span data-lang="en">© 2025 Ningbo Yunsheng Textile Technology Co., Ltd. | Ningbo Equity Code: 782327</span></div>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            const toggleBtn = document.getElementById('langToggle');
+            let currentLang = localStorage.getItem('yunsheng_lang') || 'zh';
+            function setLanguage(lang) {
+                document.body.classList.remove('lang-en', 'lang-zh');
+                if (lang === 'en') {
+                    document.body.classList.add('lang-en');
+                    toggleBtn.innerText = '中文';
+                } else {
+                    document.body.classList.add('lang-zh');
+                    toggleBtn.innerText = 'English';
+                }
+                currentLang = lang;
+                localStorage.setItem('yunsheng_lang', lang);
+                updateNavLinks(lang);
+            }
+            function updateNavLinks(lang) {
+                const mappings = {
+                    'nav-home': '#',
+                    'nav-about': lang === 'zh' ? '#about-zh' : '#about-en',
+                    'nav-business': lang === 'zh' ? '#business-zh' : '#business-en',
+                    'nav-innovation': lang === 'zh' ? '#innovation-zh' : '#innovation-en',
+                    'nav-news': lang === 'zh' ? '#news-zh' : '#news-en',
+                    'footer-about': lang === 'zh' ? '#about-zh' : '#about-en',
+                    'footer-business': lang === 'zh' ? '#business-zh' : '#business-en',
+                    'footer-innovation': lang === 'zh' ? '#innovation-zh' : '#innovation-en'
+                };
+                for (let [key, selector] of Object.entries(mappings)) {
+                    const elem = document.getElementById(key + (key.includes('footer') ? (key.includes('about')?'-zh':'') : ''));
+                    if(!elem) continue;
+                    if(selector !== '#') {
+                        elem.setAttribute('href', selector);
+                        elem.onclick = function(e) { e.preventDefault(); document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' }); };
+                    } else {
+                        elem.setAttribute('href', '#');
+                        elem.onclick = function(e) { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); };
+                    }
+                }
+                const navIds = ['nav-home', 'nav-about', 'nav-business', 'nav-innovation', 'nav-news'];
+                navIds.forEach(base => {
+                    const activeLangElem = document.getElementById(base + (lang === 'zh' ? '-zh' : '-en'));
+                    if(activeLangElem) {
+                        let targetHash = '#';
+                        if(base === 'nav-about') targetHash = lang === 'zh' ? '#about-zh' : '#about-en';
+                        else if(base === 'nav-business') targetHash = lang === 'zh' ? '#business-zh' : '#business-en';
+                        else if(base === 'nav-innovation') targetHash = lang === 'zh' ? '#innovation-zh' : '#innovation-en';
+                        else if(base === 'nav-news') targetHash = lang === 'zh' ? '#news-zh' : '#news-en';
+                        activeLangElem.setAttribute('href', targetHash);
+                        activeLangElem.onclick = function(e) { if(targetHash !== '#') { e.preventDefault(); document.querySelector(targetHash)?.scrollIntoView({ behavior: 'smooth' }); } else { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); } };
+                    }
+                });
+            }
+            toggleBtn.addEventListener('click', () => {
+                const newLang = currentLang === 'zh' ? 'en' : 'zh';
+                setLanguage(newLang);
+            });
+            setLanguage(currentLang);
+        })();
+    </script>
+</body>
+</html>
